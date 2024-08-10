@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width" name="viewport">
-  <title>Share on WhatsApp</title>
+  <title>Chat on WhatsApp</title>
   <meta http-equiv='Cache-Control' content='no-cache'>
   <meta name='robots' content='noindex,nofollow'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,16 +16,18 @@
 
 <body>
   <p><mark>Do you like this project? Please <a href='https://paypal.me/nashrullahalifauzi' target='_blank'>support me</a>. Thank you!</mark></p>
-  <h1><a href="..">TFE</a> &raquo; SoW</h1>
-  <p>SoW (Share on WhatsApp) form, the mini web application tools by <a href="mailto:syenasweta@gmail.com">Nashrullah Ali Fauzi</a>.</p>
+  <h1><a href="..">TFE</a> &raquo; CoW</h1>
+  <p>CoW (Chat on WhatsApp) form, the mini web application tools by <a href="mailto:syenasweta@gmail.com">Nashrullah Ali Fauzi</a>.</p>
   </header>
   <main>
     <form id="form" action="" method="get" target='_blank'>
 
       <fieldset>
-        <legend>WhatsApp Phone Number</legend>
+        <legend>Cow</legend>
         <p><label for="default-country">Country</label>
-          <!-- country codes (ISO 3166) and Dial codes. -->
+        </p>
+        <!-- country codes (ISO 3166) and Dial codes. -->
+        <p>
           <select name="country" id="country" required autocomplete="tel-area-code">
             <option data-countryCode="ID" value="62">Indonesia (+62)</option>
             <optgroup label="Other countries">
@@ -248,18 +250,18 @@
         </p>
         <p>
           <label>Phone Number</label>
+        </p>
+        <p>
           <input id="phone" name="tel" required autocomplete="tel" size="18" default-country="ID" />
         </p>
-        <details>
-          <summary>Advance</summary>
-          <p><label for="text">Message</label></p>
-          <p></p><textarea placeholder="Your message here." id="text" type="text" name="text" rows="7" autofocus="" autocomplete="off"></textarea></p>
-        </details>
+
+        <p><label for="text">Message</label></p>
+        <textarea placeholder="Your message here." id="text" type="text" name="text" rows="7" autofocus="" autocomplete="off"></textarea></p>
 
         <p>
           <button type="submit">Generate</button> <button type="reset">Reset</button>
         </p>
-        <p id="sow"></p>
+        <p id="cow"></p>
       </fieldset>
     </form>
   </main>
@@ -267,7 +269,7 @@
     <p>&#169; 2024 <a href='mailto:syenasweta@gmail.com'>Nashrullah Ali Fauzi</a></p>
   </footer>
 
-  <script src="sow.js?v=2"></script>
+  <script src="cow.js?v=1"></script>
 </body>
 
 </html>
