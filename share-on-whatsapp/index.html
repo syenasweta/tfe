@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width" name="viewport">
+  <title>Share on WhatsApp</title>
+  <meta http-equiv='Cache-Control' content='no-cache'>
+  <meta name='robots' content='noindex,nofollow'>
+  <script src="/q2o.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../index.css">
+  <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js/bundle/libphonenumber-max.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/phone-number-input-field"></script>
+</head>
+
+<body>
+  <p><mark>Do you like this project? Please <a href='https://paypal.me/nashrullahalifauzi' target='_blank'>support me</a>. Thank you!</mark></p>
+  <h1><a href="..">TFE</a> &raquo; SoW</h1>
+  <p>The mini web application of SoW (Share on WhatsApp) form by <a href="mailto:syenasweta@gmail.com">Nashrullah Ali Fauzi</a>.</p>
+  </header>
+  <main>
+    <form id="form" action=" https://api.whatsapp.com/send/" method="get" target='_blank'>
+
+        <fieldset>
+          <legend>WhatsApp Phone Number</legend>
+          <p><label for="default-country">Country</label> <input id="default-country" type="text" required autocomplete="country" size="2" maxlength="2" style="text-transform: uppercase" pattern="[a-zA-Z]{2}" onchange="handleDefaultCountryChange(event)" value="ID" /> <label id="country" for="phone">ID</label> <label>Phone Number</label> <input id="phone" is="phone-number-input" required autocomplete="tel-national" size="18" default-country="ID" oncountrychange="handleActualCountryChange(event)" onparse="showProperties()" /> <button type="submit">Submit</button> <button type="reset">Reset</button></p>
+            <blockquote>
+              <pre id="properties"></pre>
+            </blockquote>
+        </fieldset>
+        <details>
+          <summary>Advance</summary>
+        <fieldset>
+          <legend>Text</legend>
+          <p><label for="text">Message</label></p>
+          <p></p><textarea placeholder="Your message here." id="text" type="text" name="text" rows="7" autofocus="" autocomplete="off"></textarea></p>
+        </fieldset>
+        </details>
+    </form>
+  </main>
+  <footer>
+    <p>&#169; 2024 <a href='mailto:syenasweta@gmail.com'>Nashrullah Ali Fauzi</a></p>
+  </footer>
+
+  <script>
+  const phone = document.getElementById('phone');
+  const countryLabel = document.getElementById('country');
+  const properties = document.getElementById('properties');
+  showProperties();
+
+  /**
+   * When the default country changes, update the phone number input field.
+   */
+  function handleDefaultCountryChange(event) {
+    const input = event.target;
+    if (input.validity.valid) {
+      phone.defaultCountry = input.value.toUpperCase();
+    }
+  }
+
+  /**
+   * When the country of the phone number changes, update the relevant
+   * label. If the country is unknown, use the default.
+   * The country can change when the user enters a number including an
+   * explicit country code, e.g. +972. Alternatively it can happen when
+   * entering numbers for countries that share a country code, e.g. US and
+   * CA.
+   */
+  function handleActualCountryChange(event) {
+    countryLabel.innerText = event.detail || event.target.defaultCountry;
+  }
+
+  /**
+   * Build a map of property/value pairs that are special to this component.
+   */
+  function showProperties() {
+    const props = {};
+    const names = Object.getOwnPropertyNames(Object.getPrototypeOf(phone));
+    for (const name of names.sort()) {
+      if (typeof phone[name] !== 'function') {
+        props[name] = phone[name];
+      }
+    }
+
+    properties.innerText = JSON.stringify(props, null, '\t');
+  }
+  </script>
+</body>
+
+</html>
